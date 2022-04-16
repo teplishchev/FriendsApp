@@ -17,18 +17,10 @@ import android.preference.PreferenceManager
 import org.osmdroid.config.Configuration
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val LATITUDE = "latitude"
 private const val LONGITUDE = "longitude"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MapFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MapFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var latitude: Float? = null
     private var longitude: Float? = null
 

@@ -103,12 +103,12 @@ class PersonDetailsFragment : Fragment() {
 
             textName.text = it.name
             textAge.text = "" + it.age
-            textCompany.text = it.company
-            textEmail.text = it.email
-            textPhone.text = it.phone
-            textAbout.text = it.about
-            textAddress.text = it.address
-            textRegistered.text = "Зарегистрирован: " + getDateFromRegistered(it.registered)
+            textCompany.text = " " + it.company
+            textEmail.text = " " + it.email
+            textPhone.text = " " + it.phone
+            textAbout.text = " " + it.about
+            textAddress.text = " " + it.address
+            textRegistered.text = " " + getDateFromRegistered(it.registered)
 
             when(it.favoriteFruit){
                 Fruits.APPLE.fruitName -> imageFruit.setImageResource(Fruits.APPLE.fruitIcon)
@@ -125,22 +125,8 @@ class PersonDetailsFragment : Fragment() {
                     imageEyeColor.setBackgroundResource(EyeColor.BROWN.eyeColorValue)
             }
 
-            textCoordinates.text = "Широта: " + it.latitude + " Долгота: " + it.longitude
+            textCoordinates.text = " Широта: " + it.latitude + " Долгота: " + it.longitude
         }
-
-// To call immediately
-//        textPhone.setOnClickListener(View.OnClickListener {
-//            val callIntent = Intent(Intent.ACTION_CALL)
-//            callIntent.data = Uri.parse("tel:" + person?.phone)
-//            if (ContextCompat.checkSelfPermission(requireContext(),
-//                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//                ActivityCompat.requestPermissions(requireActivity(),
-//                    arrayOf(Manifest.permission.CALL_PHONE),REQUEST_PHONE_CALL);
-//            }
-//            else {
-//                startActivity(callIntent);
-//            }
-//        })
 
         textPhone.setOnClickListener(View.OnClickListener {
             val toDial = "tel:" + person?.phone
@@ -148,14 +134,6 @@ class PersonDetailsFragment : Fragment() {
         })
 
         textEmail.setOnClickListener(View.OnClickListener {
-            //To send message to Telegram for example
-//            val intent = Intent(Intent.ACTION_SEND)
-//            intent.type = "plain/text"
-//            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(person?.email))
-//            intent.putExtra(Intent.EXTRA_SUBJECT, "subject")
-//            intent.putExtra(Intent.EXTRA_TEXT, "mail body")
-//            startActivity(Intent.createChooser(intent, "Выберите:"))
-
             startActivity(Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + person?.email)))
         })
 

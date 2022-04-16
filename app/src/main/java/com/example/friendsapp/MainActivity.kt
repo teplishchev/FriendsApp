@@ -27,7 +27,6 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     private var myCompositeDisposable: CompositeDisposable? = null
-    private var personsList: ArrayList<Person>? = null
     private lateinit var viewModel: FriendsViewModel
 
     @Inject
@@ -53,12 +52,6 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, friendsViewModelFactory)
             .get(FriendsViewModel::class.java)
 
-//        runBlocking {
-//            withContext(Dispatchers.IO){
-//                viewModel.deleteAllPersons()
-//                viewModel.deleteAllFriendsReferences()
-//            }
-//        }
         runBlocking {
             settingsRepository.getAllSettings().observe(this@MainActivity, Observer {
                 if (it.size == 0) {
